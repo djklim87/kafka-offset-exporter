@@ -14,9 +14,11 @@ import (
 )
 
 var (
+	envLabel = os.Getenv("LABEL")
+
 	metricOffsetOldest = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
-			Name: "kafka_offset_oldest",
+			Name:  envLabel + "_kafka_offset_oldest",
 			Help: "Oldest offset for a partition",
 		},
 		[]string{
@@ -26,7 +28,7 @@ var (
 	)
 	metricOffsetNewest = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
-			Name: "kafka_offset_newest",
+			Name:  envLabel + "_kafka_offset_newest",
 			Help: "Newest offset for a partition",
 		},
 		[]string{
@@ -36,7 +38,7 @@ var (
 	)
 	metricOffsetConsumer = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
-			Name: "kafka_offset_consumer",
+			Name:  envLabel + "_kafka_offset_consumer",
 			Help: "Current offset for a consumer group",
 		},
 		[]string{
